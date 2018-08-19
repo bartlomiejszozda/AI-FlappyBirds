@@ -6,6 +6,7 @@ class BirdsGroup {
 	int numberOfBirds;
 	int numberOfLivingBirds;
 	int maxBestFlapCount = 0;
+	int maxBestFitnessPoint = 0;
 public:
 	BirdsGroup(int numOfBirds, float pos, float vel, float acc);
 
@@ -13,11 +14,17 @@ public:
 		return birds[birdNumber];
 	}
 
+	int getBestFlapCount();
+
 	int getMaxBestFlapCount() {
 		return maxBestFlapCount;
 	}
 
-	int getBestFlapCount();
+	int getBestFitnessPoint();
+
+	int getMaxBestFitnessPoint() {
+		return maxBestFitnessPoint;
+	}
 
 	bool allBirdsDied() {
 		return numberOfLivingBirds == 0;
