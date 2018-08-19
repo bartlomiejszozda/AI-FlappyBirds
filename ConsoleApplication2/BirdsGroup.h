@@ -7,54 +7,25 @@ class BirdsGroup {
 	int numberOfLivingBirds;
 	int maxBestFlapCount = 0;
 public:
-	BirdsGroup(int numOfBirds, float pos, float vel, float acc) {
-		srand(time(NULL));
-		birds = std::vector<Bird>(numOfBirds, Bird(pos, vel, acc));
-		numberOfBirds = numberOfLivingBirds = numOfBirds;
+	BirdsGroup(int numOfBirds, float pos, float vel, float acc);
+
+	Bird& operator[](int birdNumber) {
+		return birds[birdNumber];
 	}
 
 	int getMaxBestFlapCount() {
 		return maxBestFlapCount;
 	}
 
-	void updatePosition(float elapsedTime) {
-		for (Bird& b : birds) {
-			b.updatePosition(elapsedTime);
-		}
-	}
+	int getBestFlapCount();
 
-	void flap() {
-		for (Bird& b : birds) {
-			b.flap();
-		}
-	}
-	void reborn(float pos, float vel) {
-		numberOfLivingBirds = numberOfBirds;
-		for (Bird& b : birds) {
-			b.reborn(pos, vel);
-		}
-	}
-	Bird& operator[](int birdNumber) {
-		return birds[birdNumber];
-	}
-	void birdDie(int birdNumber) {
-		if (birds[birdNumber].getFlapCount() > maxBestFlapCount) {
-			maxBestFlapCount = birds[birdNumber].getFlapCount();
-		}
-		birds[birdNumber].die();
-		if (numberOfLivingBirds > 0) {
-			--numberOfLivingBirds;
-		}
-		else
-			throw exception();
-	}
 	bool allBirdsDied() {
 		return numberOfLivingBirds == 0;
 	}
-	int getBestFlapCount() {
-		for (Bird& b : birds) {
-			if(b.isAlive())
-				return b.getFlapCount();
-		}
-	}
+
+	void updatePosition(float elapsedTime);
+
+	void flap();
+	void reborn(float pos, float vel);
+	void birdDie(int birdNumber);
 };

@@ -1,5 +1,4 @@
 #pragma once
-#include "pch.h"
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -8,7 +7,6 @@ using namespace std;
 
 
 class Bird {
-	//static float initialPosition;
 	bool imAlive = 1;
 	float position;
 	float velocity;
@@ -25,34 +23,8 @@ public:
 	float getAcceleration() { return acceleration; }
 	bool isAlive() { return imAlive; }
 
-	void updatePosition(float elapsedTime) {
-		if (imAlive) {
-			velocity += acceleration * elapsedTime;
-			position += velocity * elapsedTime;
-		}
-	}
-
-	void flap() {
-		if (imAlive) {
-			velocity = -50.0f + (rand() % 10);
-			++flapCount;
-		}
-	}
-	void reborn(float pos, float vel) {
-		if (!imAlive) {
-			imAlive = true;
-			position = pos;
-			velocity = vel;
-			flapCount = 0;
-		}
-	}
-	void die() {
-		imAlive = false;
-		if (flapCount > maxFlapCount) {
-			maxFlapCount = flapCount;
-		}
-	}
+	void updatePosition(float elapsedTime);
+	void flap();
+	void reborn(float pos, float vel);
+	void die();
 };
-
-//float Bird::initialPosition = 0;
-//int Bird::maxFlapCount = 0;
