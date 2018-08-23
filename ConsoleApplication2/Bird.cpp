@@ -1,6 +1,22 @@
 #pragma once
 #include "Bird.h"
 
+void Bird::setDistanceHorizontally(float distance) {
+	distanceHorizontally = distance;
+}
+
+float Bird::getDistanceHorizontally() {
+	return distanceHorizontally;
+}
+
+void Bird::actualiseDistanceVertically(float levelHigh) {
+	distanceVertically = position - (levelHigh);
+}
+
+float Bird::getDistanceVertically() {
+	return distanceVertically;
+}
+
 void Bird::updatePosition(float elapsedTime) {
 	if (imAlive) {
 		velocity += acceleration * elapsedTime;

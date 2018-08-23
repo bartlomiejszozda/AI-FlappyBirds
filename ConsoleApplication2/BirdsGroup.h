@@ -31,6 +31,8 @@ public:
 	}
 
 	void updatePosition(float elapsedTime);
+	void setDistanceHorizontally(float distance);
+	void actualiseDistanceVertically(float levelHigh);
 
 	void flap();
 	void reborn(float pos, float vel);

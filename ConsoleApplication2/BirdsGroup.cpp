@@ -13,6 +13,18 @@ void BirdsGroup::updatePosition(float elapsedTime) {
 	}
 }
 
+void BirdsGroup::setDistanceHorizontally(float distance) {
+	for (Bird& b : birds) {
+		b.setDistanceHorizontally(distance);
+	}
+}
+
+void BirdsGroup::actualiseDistanceVertically(float levelHigh) {
+	for (Bird& b : birds) {
+		b.actualiseDistanceVertically(levelHigh);
+	}
+}
+
 void BirdsGroup::flap() {
 	for (Bird& b : birds) {
 		b.flap();

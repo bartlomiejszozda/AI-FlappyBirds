@@ -1,0 +1,9 @@
+.vs/
+ConsoleApplication2.sln
+**/ConsoleApplication2.vcxproj
+**/ConsoleApplication2.vcxproj.filters
+**/ConsoleApplication2.vcxproj.user
+**/Debug/
+**/x64/
+Debug/
+x64/
